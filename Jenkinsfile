@@ -47,6 +47,7 @@
 				steps { 
 					bat "deploy-bd.bat"
 					bat "deploy-app.bat"
+					archiveArtifacts artifacts: 'KitBasicoAutomApp/*.txt', excludes: 'output/*.md'
 				}
 			}
 
@@ -91,6 +92,7 @@
 					bat 'xcopy "KitBasicoAutomApp-Ops/config" "KitBasicoAutomApp/build/libs/config"'
 					bat "deploy-bd.bat"
 					bat "deploy-app.bat"
+					archiveArtifacts artifacts: 'KitBasicoAutomApp/*.txt', excludes: 'output/*.md'
 				}
 			}
 			
