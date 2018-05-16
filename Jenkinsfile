@@ -78,7 +78,6 @@
 				
 					script{	
 					
-					input "Desea desplegar a pruebas?"
 					
 						checkout([$class: 'GitSCM', 
 						branches: [[name: '*/master']], 
