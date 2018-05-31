@@ -116,6 +116,11 @@
 					subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
 					body: "Something is wrong with ${env.BUILD_URL}"
 			}
+			
+			always {
+				// Let's wipe out the workspace before we finish!
+				deleteDir()
+			}
 		}
 		
 	}
