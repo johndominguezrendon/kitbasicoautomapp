@@ -1,5 +1,7 @@
 // This shows a simple build wrapper example, using the AnsiColor plugin.
 	
+	@Library("DeployProduction") _
+	
 	pipeline { 
 		agent any
 		triggers { pollSCM('* * * * *') }
@@ -7,10 +9,9 @@
 		stages {
 			stage('Desplegar producción'){
 				steps { 
-					@Library("DeployProduction") _
-					standardPipeline {
-						projectName = "Project1"
-						serverDomain = "Project1 Server Domain"
+					 script { 
+						standardPipeline.call
+						
 					}
 				}
 			}
