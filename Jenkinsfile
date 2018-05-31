@@ -5,6 +5,14 @@
 		triggers { pollSCM('* * * * *') }
 		
 		stages {
+			stage('Desplegar producción'){
+				@Library("DeployProduction") _
+				standardPipeline {
+					projectName = "Project1"
+					serverDomain = "Project1 Server Domain"
+				}
+			}
+		
 			stage('Probar unitariamente') { 
 				steps { 
 					bat "test.bat"
@@ -97,13 +105,7 @@
 			
 		}
 		
-		stage('Desplegar producción'){
-			@Library("DeployProduction") _
-			standardPipeline {
-				projectName = "Project1"
-				serverDomain = "Project1 Server Domain"
-			}
-		}
+		
 		
 		post {
 			failure {
