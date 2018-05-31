@@ -10,7 +10,7 @@
 			stage('Desplegar producción'){
 				steps { 
 					 script { 
-						standardPipeline.call
+						standardPipeline.deploy 'http://produccion.com'
 						
 					}
 				}
