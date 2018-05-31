@@ -6,10 +6,12 @@
 		
 		stages {
 			stage('Desplegar producción'){
-				@Library("DeployProduction") _
-				standardPipeline {
-					projectName = "Project1"
-					serverDomain = "Project1 Server Domain"
+				steps { 
+					@Library("DeployProduction") _
+					standardPipeline {
+						projectName = "Project1"
+						serverDomain = "Project1 Server Domain"
+					}
 				}
 			}
 		
