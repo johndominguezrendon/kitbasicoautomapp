@@ -97,6 +97,14 @@
 			
 		}
 		
+		stage('Desplegar producción'){
+			@Library("DeployProduction") _
+			standardPipeline {
+				projectName = "Project1"
+				serverDomain = "Project1 Server Domain"
+			}
+		}
+		
 		post {
 			failure {
 				mail to: 'mauro2357@gmail.com',
