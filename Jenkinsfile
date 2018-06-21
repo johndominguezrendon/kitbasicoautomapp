@@ -7,14 +7,7 @@
 		triggers { pollSCM('* * * * *') }
 		
 		stages {
-			stage('Desplegar producción'){
-				steps { 
-					 script { 
-						standardPipeline.deploy 'http://produccion.com'
-						
-					}
-				}
-			}
+			
 		
 			stage('Probar unitariamente') { 
 				steps { 
@@ -103,6 +96,15 @@
 					bat "deploy-bd.bat"
 					bat "deploy-app.bat"
 					archiveArtifacts artifacts: 'KitBasicoAutomApp/*.txt', excludes: 'output/*.md'
+				}
+			}
+			
+			stage('Desplegar producción'){
+				steps { 
+					 script { 
+						standardPipeline.deploy 'http://produccion.com'
+						
+					}
 				}
 			}
 			
