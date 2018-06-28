@@ -8,8 +8,12 @@
 		
 		stages {
 			
-		
-			stage('Probar unitariamente') { 
+		    			stage('Probar unitariamente') { 
+				            buildInfo = rtGradle.run rootDir: "KitBasicoAutomApp/tree/master/KitBasicoAutomApp/", buildFile: 'build.gradle'
+    }
+        	
+
+/*			stage('Probar unitariamente') { 
 				steps {
                                         script { 
                                         if (isUnix()) {         
@@ -21,7 +25,7 @@
 				}
 			}
 		
-			
+*/			
 /*			stage('Analisis de c�digo') { 
 				steps { 
 					withSonarQubeEnv('SonarQubeLocal') {
