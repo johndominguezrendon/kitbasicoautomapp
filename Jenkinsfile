@@ -22,7 +22,7 @@
 			}
 		
 			
-			stage('Analisis de código') { 
+/*			stage('Analisis de cï¿½digo') { 
 				steps { 
 					withSonarQubeEnv('SonarQubeLocal') {
 						bat 'anali_code.bat'
@@ -31,7 +31,7 @@
 				}
 			}
 			
-			stage('Verificar calidad técnica') { 
+			stage('Verificar calidad tï¿½cnica') { 
 				steps { 
 					script{					
 					timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
@@ -43,7 +43,7 @@
 					}
 				}
 			}
-			
+*/			
 			stage('Generar desplegable') { 
 				steps { 
 					powershell 'wget http://localhost:8090/shutdown'
@@ -53,14 +53,14 @@
 				}
 			}
 			
-			stage('Desplegar Integración') { 
+			stage('Desplegar Integraciï¿½n') { 
 				steps { 
 					bat "deploy-bd.bat"
 					bat "deploy-app.bat"
 					archiveArtifacts artifacts: 'KitBasicoAutomApp/*.txt', excludes: 'output/*.md'
 				}
 			}
-
+/*
 			stage('Versionar'){
 				steps {
 					script{
@@ -82,16 +82,19 @@
 					}
 				}
 			}
-			
+*/	
+/*
+
+		
 			stage('Desplegar Pruebas') { 
 				steps { 
 				
 					script{	
-					
-					
-						checkout([$class: 'GitSCM', 
-						branches: [[name: '*/master']], 
-						doGenerateSubmoduleConfigurations: false, 
+										
+*/
+//						checkout([$class: 'GitSCM', 
+//						branches: [[name: '*/master']], 
+/*						doGenerateSubmoduleConfigurations: false, 
 						extensions: [[$class: 'RelativeTargetDirectory', 
 							relativeTargetDir: 'KitBasicoAutomApp-Ops']], 
 						submoduleCfg: [], 
@@ -104,8 +107,9 @@
 					archiveArtifacts artifacts: 'KitBasicoAutomApp/*.txt', excludes: 'output/*.md'
 				}
 			}
-			
-			stage('Desplegar producción'){
+*/
+/*			
+			stage('Desplegar producciï¿½n'){
 				steps { 
 					 script { 
 						standardPipeline.deploy 'http://produccion.com'
@@ -116,7 +120,7 @@
 			
 		}
 		
-		
+*/	
 		
 		post {
 			failure {
