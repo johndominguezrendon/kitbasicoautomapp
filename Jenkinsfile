@@ -7,6 +7,23 @@
 		triggers { pollSCM('* * * * *') }
 		
 		stages {
+
+			node {
+    stage('Compile') {
+        // First variant
+        gradle {
+            tasks: 'clean'
+            tasks: 'compileJava'
+        }
+
+        // Second variant
+        gradle tasks: 'clean'
+        gradle tasks: 'compileJava'
+
+        // Third variant
+        gradle('clean')
+        gradle('compileJava')
+    }
 			
 		
 			stage('Probar unitariamente') { 
