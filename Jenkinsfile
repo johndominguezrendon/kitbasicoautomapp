@@ -14,8 +14,7 @@
                                         script { 
                                         if (isUnix()) {
 										 sh 'cd KitBasicoAutomApp/'	  
-										 sh 'chmod +x gradlew'       
-                                         sh './gradlew test'       
+										 sh 'gradle build --info'              
                                         } else {         
                                                  bat "test.bat"      
                                         }
