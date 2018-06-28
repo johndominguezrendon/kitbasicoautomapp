@@ -12,9 +12,10 @@
 			stage('Probar unitariamente') { 
 				steps {
                                         script { 
-                                        if (isUnix()) {  
+                                        if (isUnix()) {
+										 sh 'cd KitBasicoAutomApp/'	  
 										 sh 'chmod +x gradlew'       
-                                         sh './gradlew clean build'       
+                                         sh './gradlew test'       
                                         } else {         
                                                  bat "test.bat"      
                                         }
