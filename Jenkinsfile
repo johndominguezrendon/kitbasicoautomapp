@@ -8,7 +8,7 @@
 		
 		stages {
 
-			node {
+    	node {
             stage('Compile') {
             // First variant
             gradle {
