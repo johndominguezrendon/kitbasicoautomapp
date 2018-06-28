@@ -12,7 +12,8 @@
 			stage('Probar unitariamente') { 
 				steps {
                                         script { 
-                                        if (isUnix()) {         
+                                        if (isUnix()) {  
+										 sh 'chmod +x gradlew'       
                                          sh './gradlew clean build'       
                                         } else {         
                                                  bat "test.bat"      
