@@ -13,7 +13,7 @@
 				steps {
                                         script { 
                                         if (isUnix()) {         
-                                         sh 'gradle build'       
+                                         sh './gradlew clean build'       
                                         } else {         
                                                  bat "test.bat"      
                                         }
