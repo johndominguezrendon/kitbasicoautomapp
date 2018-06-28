@@ -9,9 +9,10 @@
 		stages {
 			
 		    stage('Probar unitariamente') { 
-			buildInfo = rtGradle.run rootDir: "KitBasicoAutomApp/tree/master/KitBasicoAutomApp/", buildFile: 'build.gradle'
+			    steps { 
+				buildInfo = rtGradle.run rootDir: "KitBasicoAutomApp/tree/master/KitBasicoAutomApp/", buildFile: 'build.gradle'
     }
-        	
+}
 
 /*			stage('Probar unitariamente') { 
 				steps {
