@@ -1,2 +1,2 @@
-CREATE TABLE PAISES (IDPAIS BIGINT PRIMARY KEY auto_increment, 
-NOMBRE VARCHAR(50));
+CREATE TABLE paises (idpais BIGINT PRIMARY KEY auto_increment, 
+nombre VARCHAR(50));

@@ -1,2 +1,2 @@
-CREATE TABLE CIUDADES (IDCIUDAD BIGINT PRIMARY KEY auto_increment, 
-NOMBRE VARCHAR(50));
+CREATE TABLE ciudades (idciudad BIGINT PRIMARY KEY auto_increment, 
+nombre VARCHAR(50));
