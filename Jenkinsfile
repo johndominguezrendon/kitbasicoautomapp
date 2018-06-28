@@ -13,7 +13,7 @@
 				steps {
                                         script { 
                                         if (isUnix()) {         
-                                         sh ('test.sh')       
+                                         sh ('./test.sh')       
                                         } else {         
                                                  bat "test.bat"      
                                         }
