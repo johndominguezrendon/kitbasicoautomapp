@@ -1,0 +1,2 @@
+cd KitBasicoAutomApp
+gradle test

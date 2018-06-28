@@ -11,7 +11,11 @@
 		
 			stage('Probar unitariamente') { 
 				steps { 
-					bat "test.bat"
+                                        if (isUnix()) {         
+                                         sh 'test.sh'       
+                                        } else {         
+                                                 bat "test.bat"      
+                                        }
 				}
 			}
 		
