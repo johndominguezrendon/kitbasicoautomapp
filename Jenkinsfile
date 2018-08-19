@@ -7,41 +7,23 @@
 		triggers { pollSCM('* * * * *') }
 		
 		stages {
-
-    	node {
-            stage('Compile') {
-            // First variant
-            gradle {
-            tasks: 'clean'
-            tasks: 'compileJava'
-        }
-
-            // Second variant
-             gradle tasks: 'clean'
-             gradle tasks: 'compileJava'
-
-            // Third variant
-            gradle('clean')
-            gradle('compileJava')
-    }
-}
-			
+			stage('Desplegar producción'){
+				steps { 
+					 script { 
+						standardPipeline.deploy 'http://produccion.com'
+						
+					}
+				}
+			}
 		
 			stage('Probar unitariamente') { 
-				steps {
-                                        script { 
-                                        if (isUnix()) {
-										 sh 'cd KitBasicoAutomApp/'	  
-										 sh 'gradle build --info'              
-                                        } else {         
-                                                 bat "test.bat"      
-                                        }
-                                        }	
+				steps { 
+					bat "test.bat"
 				}
 			}
 		
 			
-/*			stage('Analisis de cï¿½digo') { 
+			stage('Analisis de código') { 
 				steps { 
 					withSonarQubeEnv('SonarQubeLocal') {
 						bat 'anali_code.bat'
@@ -50,7 +32,7 @@
 				}
 			}
 			
-			stage('Verificar calidad tï¿½cnica') { 
+			stage('Verificar calidad técnica') { 
 				steps { 
 					script{					
 					timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
@@ -62,7 +44,7 @@
 					}
 				}
 			}
-*/			
+			
 			stage('Generar desplegable') { 
 				steps { 
 					powershell 'wget http://localhost:8090/shutdown'
@@ -72,14 +54,14 @@
 				}
 			}
 			
-			stage('Desplegar Integraciï¿½n') { 
+			stage('Desplegar Integración') { 
 				steps { 
 					bat "deploy-bd.bat"
 					bat "deploy-app.bat"
 					archiveArtifacts artifacts: 'KitBasicoAutomApp/*.txt', excludes: 'output/*.md'
 				}
 			}
-/*
+
 			stage('Versionar'){
 				steps {
 					script{
@@ -101,19 +83,16 @@
 					}
 				}
 			}
-*/	
-/*
-
-		
+			
 			stage('Desplegar Pruebas') { 
 				steps { 
 				
 					script{	
-										
-*/
-//						checkout([$class: 'GitSCM', 
-//						branches: [[name: '*/master']], 
-/*						doGenerateSubmoduleConfigurations: false, 
+					
+					
+						checkout([$class: 'GitSCM', 
+						branches: [[name: '*/master']], 
+						doGenerateSubmoduleConfigurations: false, 
 						extensions: [[$class: 'RelativeTargetDirectory', 
 							relativeTargetDir: 'KitBasicoAutomApp-Ops']], 
 						submoduleCfg: [], 
@@ -126,21 +105,11 @@
 					archiveArtifacts artifacts: 'KitBasicoAutomApp/*.txt', excludes: 'output/*.md'
 				}
 			}
-*/
-/*			
-			stage('Desplegar producciï¿½n'){
-				steps { 
-					 script { 
-						standardPipeline.deploy 'http://produccion.com'
-						
-					}
-				}
-			}
 			
 		}
 		
-*/	
-}		
+		
+		
 		post {
 			failure {
 				mail to: 'mauro2357@gmail.com',
@@ -154,7 +123,5 @@
 			}
 		}
 		
-}
-
-
+	}
 

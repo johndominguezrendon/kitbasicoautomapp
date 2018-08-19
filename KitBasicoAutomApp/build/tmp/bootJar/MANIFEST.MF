@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Start-Class: co.com.valtica.kitbasico.Application
-Main-Class: org.springframework.boot.loader.JarLauncher
-
